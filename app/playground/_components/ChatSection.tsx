@@ -8,9 +8,10 @@ import { useState } from "react"
 type Props = {
     messages: Messages[]
     onSend:any
+    loading: boolean
 }
 
-function ChatSection({ messages, onSend }: Props) {
+function ChatSection({ messages, onSend, loading }: Props) {
 
     const [input, setInput] = useState<string>('')
     const handleSend = () => {
@@ -34,6 +35,12 @@ function ChatSection({ messages, onSend }: Props) {
                         </div>
                     ))
                 )}
+
+                {loading && <div className="flex justify-center items-center p-4">
+                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-zinc-800"/> 
+                        <span className="ml-2 text-zinc-800">Thinking... Working on your request.</span>
+                    
+                </div>}
             </div>
 
             {/* footer input */}
